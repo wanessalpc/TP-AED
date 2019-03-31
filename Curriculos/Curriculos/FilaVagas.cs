@@ -65,7 +65,17 @@ namespace Curriculos
             if (VagaPrim.VagaProx == null) // Se fila Vazia => alterar VagaUlt para lista vazia.
                 VagaUlt = VagaPrim;
         }
-        public void Buscar() { }
+        public Vagas Buscar(string NomeEmpresa) // Retorna primeira vaga com atributos recebidos.
+        {
+            Vagas Aux = VagaPrim;
+            while (Aux.VagaProx != null)
+            {
+                if (Aux.NomeEmpresa == NomeEmpresa)
+                    return Aux;
+                Aux = Aux.VagaProx;
+            }
+            return null;
+        }
         public override string ToString()
         {
             return base.ToString();
