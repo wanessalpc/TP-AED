@@ -16,6 +16,7 @@ namespace Curriculos
         private Vagas vagaProx;
         private string nomeEmpresa;
 
+        //Construtor
         public Vagas(string area)
         {
             this.validade = Validade;
