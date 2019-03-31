@@ -1,2 +1,1 @@
 c:\users\wanessa\documents\visual studio 2015\Projects\Curriculos\Curriculos\bin\Debug\Curriculos.exe.config
-C:\Users\Wanessa\Documents\GitHub\TP\Curriculos\Curriculos\bin\Debug\Curriculos.exe.config
