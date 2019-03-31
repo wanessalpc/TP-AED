@@ -59,7 +59,7 @@ namespace Curriculos
         {
             return base.ToString();
         }
-		
+
         //Construtor
         public FilaVagas(string Area)
         {
