@@ -17,7 +17,7 @@ namespace Curriculos
         private string nomeEmpresa;
 
         //Get e Set        
-        public Vagas VagaProx
+        internal Vagas VagaProximo
         {
             get
             {
