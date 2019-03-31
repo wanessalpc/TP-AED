@@ -38,7 +38,6 @@ namespace Curriculos
                 vagaUlt = value;
             }
         }
-
         public FilaVagas FilaVagaProximo
         {
             get
@@ -52,46 +51,53 @@ namespace Curriculos
             }
         }
 
-
-
         //Métodos
         public void Adicionar(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa) // Adiciona vaga no final da fila.
         {
             Vagas NovaVaga = new Vagas(Validade, Area, Escolaridade, Salario, NomeEmpresa);
-            VagaUlt.VagaProx = NovaVaga;
-            VagaUlt = NovaVaga;
+            vagaUlt.VagaProximo = NovaVaga;
+            vagaUlt = NovaVaga;
         }
         public void Remover() // Remove a primeira vaga da fila.
         {
             if (Vazia()) throw new Exception("Não ha vagas disponíveis nesta área.");
-            VagaPrim.VagaProx = VagaPrim.VagaProx.VagaProx; // Aponta para o proximo da fila.
-            if (VagaPrim.VagaProx == null) // Se fila Vazia => alterar VagaUlt para lista vazia.
-                VagaUlt = VagaPrim;
+            vagaPrim.VagaProximo = vagaPrim.VagaProximo.VagaProximo; // Aponta para o proximo da fila.
+            if (vagaPrim.VagaProximo == null) // Se fila Vazia => alterar vagaUlt para lista vazia.
+                vagaUlt = vagaPrim;
         }
-        public Vagas Buscar(string NomeEmpresa) // Retorna primeira vaga com atributos recebidos.
+        public List<Vagas> Buscar(string NomeEmpresa) // Retorna lista de vagas da empresa informada.
         {
-            Vagas Aux = VagaPrim;
-            while (Aux.VagaProx != null)
+            Vagas Aux = vagaPrim.VagaProximo;
+            List<Vagas> result = new List<Vagas>();
+            while (Aux != null)
             {
                 if (Aux.NomeEmpresa == NomeEmpresa)
-                    return Aux;
-                Aux = Aux.VagaProx;
+                    result.Add(Aux);
+                Aux = Aux.VagaProximo;
             }
-            return null;
+            return result;
         }
-        public override string ToString()
+        public override string ToString() // Não sei se esse método vai funcionar, tentei copiar de um exemplo do Prof.
         {
-            return base.ToString();
+            if (Vazia()) return null;
+            StringBuilder print = new StringBuilder();
+            Vagas Aux = VagaPrimeiro.VagaProximo;
+            while (Aux != null)
+            {
+                print.AppendLine(Aux.ToString());
+                Aux = Aux.VagaProximo;
+            }
+            return print.ToString();
         }
         public bool Vazia() // returna true se fila esta vazia.
         {
-            return VagaPrim == VagaUlt;
+            return vagaPrim == vagaUlt;
         }
         //Construtor
         public FilaVagas(string Area)
         {
-            VagaPrim = new Vagas(Area);
-            VagaUlt = VagaPrim;
+            vagaPrim = new Vagas(Area);
+            vagaUlt = vagaPrim;
         }
     }
 }
