@@ -16,6 +16,17 @@ namespace Curriculos
         private Vagas vagaProximo;
         private string nomeEmpresa;
 
+        public Vagas(string area)
+        {
+            this.validade = Validade;
+            this.area = area;
+            this.escolaridade = Escolaridade;
+            this.salario = Salario;
+            this.vagaProximo = VagaProximo;
+            this.nomeEmpresa = NomeEmpresa;
+
+        }
+
         //Get e Set
         public DateTime Validade
         {

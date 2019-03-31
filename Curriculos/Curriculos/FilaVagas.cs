@@ -14,7 +14,7 @@ namespace Curriculos
         private FilaVagas filaVagaProx;
 
         //Get e Set
-        internal Vagas VagaPrimeiro
+        internal Vagas VagaPrim
         {
             get
             {
@@ -26,7 +26,7 @@ namespace Curriculos
                 vagaPrim = value;
             }
         }
-        internal Vagas VagaUltimo
+        internal Vagas VagaUlt
         {
             get
             {
@@ -39,7 +39,7 @@ namespace Curriculos
             }
         }
 
-        public FilaVagas FilaVagaProximo
+        public FilaVagas FilaVagaProx
         {
             get
             {
@@ -57,15 +57,15 @@ namespace Curriculos
         //Métodos
         public void Adicionar(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa) // Adiciona vaga no final da fila.
         {
-            Vagas NovaVaga = new Vagas(Validade, Area, Escolaridade, Salario, NomeEmpresa);
-            VagaUlt.VagaProx = NovaVaga;
+            Vagas NovaVaga = new Vagas(Area); // ( Validade, Area, Escolaridade, Salario, NomeEmpresa)
+            VagaUlt.VagaProximo = NovaVaga;
             VagaUlt = NovaVaga;
         }
         public void Remover() // Remove a primeira vaga da fila.
         {
             if (Vazia()) throw new Exception("Não ha vagas disponíveis nesta área.");
-            VagaPrim.VagaProx = VagaPrim.VagaProx.VagaProx; // Aponta para o proximo da fila.
-            if (VagaPrim.VagaProx == null) // Se fila Vazia => alterar VagaUlt para lista vazia.
+            VagaPrim.VagaProximo = VagaPrim.VagaProximo; // Aponta para o proximo da fila.
+            if (VagaPrim.VagaProximo == null) // Se fila Vazia => alterar VagaUlt para lista vazia.
                 VagaUlt = VagaPrim;
         }
         public void Buscar() { }
@@ -80,7 +80,7 @@ namespace Curriculos
         //Construtor
         public FilaVagas(string Area)
         {
-            VagaPrim = new Vagas(Area);
+            VagaPrim = new Vagas (Area);
             VagaUlt = VagaPrim;
         }
     }
