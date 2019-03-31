@@ -9,14 +9,26 @@ namespace Curriculos
     class Vagas
     {
         //Atributos
+        private Vagas vagaProximo;
         private DateTime validade;
         private string area;
         private string escolaridade;
         private double salario;
-        private Vagas vagaProximo;
         private string nomeEmpresa;
 
-        //Get e Set
+        //Get e Set        
+        public Vagas VagaProx
+        {
+            get
+            {
+                return vagaProximo;
+            }
+
+            set
+            {
+                vagaProximo = value;
+            }
+        }
         public DateTime Validade
         {
             get
@@ -29,7 +41,6 @@ namespace Curriculos
                 validade = value;
             }
         }
-
         public string Area
         {
             get
@@ -42,7 +53,6 @@ namespace Curriculos
                 area = value;
             }
         }
-
         public string Escolaridade
         {
             get
@@ -55,7 +65,6 @@ namespace Curriculos
                 escolaridade = value;
             }
         }
-
         public double Salario
         {
             get
@@ -68,20 +77,6 @@ namespace Curriculos
                 salario = value;
             }
         }
-
-        internal Vagas VagaProximo
-        {
-            get
-            {
-                return vagaProximo;
-            }
-
-            set
-            {
-                vagaProximo = value;
-            }
-        }
-
         public string NomeEmpresa
         {
             get
@@ -93,6 +88,22 @@ namespace Curriculos
             {
                 nomeEmpresa = value;
             }
+        }
+
+        //Construtor
+        public Vagas(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa)
+        {
+            this.Validade = Validade;
+            this.Area = Area;
+            this.Escolaridade = Escolaridade;
+            this.Salario = Salario;
+            this.NomeEmpresa = NomeEmpresa;
+        }
+
+        //Construtor padrão
+        public Vagas(string Area)
+        {
+            this.Area = Area;
         }
     }
 }

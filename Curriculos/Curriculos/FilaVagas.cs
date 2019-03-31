@@ -11,10 +11,10 @@ namespace Curriculos
         //Atributos
         private Vagas vagaPrimeiro;
         private Vagas vagaUltimo;
-        private Vagas filaVagaProximo;
+        private FilaVagas filaVagaProximo;
 
         //Get e Set
-        internal Vagas VagaPrimeiro
+        public Vagas VagaPrim
         {
             get
             {
@@ -26,8 +26,7 @@ namespace Curriculos
                 vagaPrimeiro = value;
             }
         }
-
-        internal Vagas VagaUltimo
+        public Vagas VagaUlt
         {
             get
             {
@@ -39,8 +38,7 @@ namespace Curriculos
                 vagaUltimo = value;
             }
         }
-
-        internal Vagas FilaVagaProximo
+        public FilaVagas FilaProx
         {
             get
             {
@@ -53,22 +51,20 @@ namespace Curriculos
             }
         }
 
-
         //Métodos
-        public void adicionar() {}
-        public void remover() {}
-        public void buscar() {}
-        public void toString() {}
+        public void Adicionar() { }
+        public void Remover() { }
+        public void Buscar() { }
+        public override string ToString()
+        {
+            return base.ToString();
+        }
 
-
-
-        //Vagas Prim;
-        //Vagas Ult;
-
-        //public FilaVagas(string Area)
-        //{
-        //    Prim = new Vagas(Area, null, 0);
-        //    Ult = Prim;
-        //}
+        //Construtor
+        public FilaVagas(string Area)
+        {
+            VagaPrim = new Vagas(Area);
+            VagaUlt = VagaPrim;
+        }
     }
 }

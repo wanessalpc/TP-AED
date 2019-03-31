@@ -6,14 +6,45 @@ using System.Threading.Tasks;
 
 namespace Curriculos
 {
-    class GerenciadorVagas
+    public class GerenciadorVagas
     {
-        //filaVagaPrimeiro
-        //filaVagaUltimo
+        //Atributos
+        private FilaVagas filaPrim;
+        private FilaVagas filaUlt;
 
+        //Get e Set
+        public FilaVagas FilaPrim
+        {
+            get { return filaPrim; }
+            set { filaPrim = value; }
+        }
+        public FilaVagas FilaUlt
+        {
+            get { return filaUlt; }
+            set { filaUlt = value; }
+        }
 
+        //Métodos
+        public void AdicionarVaga()
+        {
 
-        //public void () {}
-        //public void () {}
+        }
+        
+        public void RemoverVaga()
+        {
+
+        }
+
+        public void BuscarFila()
+        {
+
+        }
+
+        //Construtor
+        public GerenciadorVagas()
+        {
+            FilaPrim = new FilaVagas(null);
+            FilaUlt = FilaPrim;
+        }
     }
 }
