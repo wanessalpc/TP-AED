@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Curriculos
 {
-    class Vagas
+    public class Vagas
     {
         //Atributos
         private DateTime validade;
@@ -105,6 +105,21 @@ namespace Curriculos
             {
                 nomeEmpresa = value;
             }
+        }
+
+        //Construtor
+        public Vagas(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa)
+        {
+            this.Validade = Validade;
+            this.Area = Area;
+            this.Escolaridade = Escolaridade;
+            this.Salario = Salario;
+            this.NomeEmpresa = NomeEmpresa;
+        }
+        //Construtor padrão
+        public Vagas(string Area)
+        {
+            this.Area = Area;
         }
     }
 }
