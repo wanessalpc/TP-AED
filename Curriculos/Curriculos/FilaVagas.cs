@@ -45,12 +45,8 @@ namespace Curriculos
                 vagaUlt = value;
             }
         }
-<<<<<<< HEAD
 
         public FilaVagas FilaVagaProx
-=======
-        public FilaVagas FilaVagaProximo
->>>>>>> origin/master
         {
             get
             {
@@ -66,38 +62,31 @@ namespace Curriculos
         //Métodos
         public void Adicionar(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa) // Adiciona vaga no final da fila.
         {
-<<<<<<< HEAD
-            Vagas NovaVaga = new Vagas(Area); // ( Validade, Area, Escolaridade, Salario, NomeEmpresa)
-            VagaUlt.VagaProx = NovaVaga;
-            VagaUlt = NovaVaga;
-=======
             Vagas NovaVaga = new Vagas(Validade, Area, Escolaridade, Salario, NomeEmpresa);
-            vagaUlt.VagaProximo = NovaVaga;
+            vagaUlt.VagaProx = NovaVaga;
             vagaUlt = NovaVaga;
->>>>>>> origin/master
         }
         public void Remover() // Remove a primeira vaga da fila.
         {
             if (Vazia()) throw new Exception("Não ha vagas disponíveis nesta área.");
-<<<<<<< HEAD
+
             VagaPrim.VagaProx = VagaPrim.VagaProx; // Aponta para o proximo da fila.
             if (VagaPrim.VagaProx == null) // Se fila Vazia => alterar VagaUlt para lista vazia.
                 VagaUlt = VagaPrim;
-=======
-            vagaPrim.VagaProximo = vagaPrim.VagaProximo.VagaProximo; // Aponta para o proximo da fila.
-            if (vagaPrim.VagaProximo == null) // Se fila Vazia => alterar vagaUlt para lista vazia.
+
+            vagaPrim.VagaProx = vagaPrim.VagaProx.VagaProx; // Aponta para o proximo da fila.
+            if (vagaPrim.VagaProx == null) // Se fila Vazia => alterar vagaUlt para lista vazia.
                 vagaUlt = vagaPrim;
->>>>>>> origin/master
         }
         public List<Vagas> Buscar(string NomeEmpresa) // Retorna lista de vagas da empresa informada.
         {
-            Vagas Aux = vagaPrim.VagaProximo;
+            Vagas Aux = vagaPrim.VagaProx;
             List<Vagas> result = new List<Vagas>();
             while (Aux != null)
             {
                 if (Aux.NomeEmpresa == NomeEmpresa)
                     result.Add(Aux);
-                Aux = Aux.VagaProximo;
+                Aux = Aux.VagaProx;
             }
             return result;
         }
@@ -105,11 +94,11 @@ namespace Curriculos
         {
             if (Vazia()) return null;
             StringBuilder print = new StringBuilder();
-            Vagas Aux = VagaPrimeiro.VagaProximo;
+            Vagas Aux = VagaPrim.VagaProx;
             while (Aux != null)
             {
                 print.AppendLine(Aux.ToString());
-                Aux = Aux.VagaProximo;
+                Aux = Aux.VagaProx;
             }
             return print.ToString();
         }
@@ -117,15 +106,7 @@ namespace Curriculos
         {
             return vagaPrim == vagaUlt;
         }
-<<<<<<< HEAD
-        
-=======
-        //Construtor
-        public FilaVagas(string Area)
-        {
-            vagaPrim = new Vagas(Area);
-            vagaUlt = vagaPrim;
-        }
->>>>>>> origin/master
+
+
     }
 }
