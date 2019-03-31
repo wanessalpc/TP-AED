@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Curriculos
 {
-    class Vagas
+    public class Vagas
     {
         //Atributos
         private Vagas vagaProximo;
