@@ -55,9 +55,8 @@ namespace Curriculos
 
 
         //Métodos
-        public void adicionar() {}
-        public void remover() {}
-        public void buscar() {}
+        public void adicionarVaga() {}
+        public void removerVaga() {}
         public void toString() {}
 
 

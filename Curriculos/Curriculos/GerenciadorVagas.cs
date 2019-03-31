@@ -15,5 +15,7 @@ namespace Curriculos
 
         //public void () {}
         //public void () {}
+        public void buscar() { }
+
     }
 }
