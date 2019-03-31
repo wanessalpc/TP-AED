@@ -13,8 +13,8 @@ namespace Curriculos
 
 
 
-        //public void () {}
-        //public void () {}
+        //public void adicionarVaga() {}
+        //public void removerVaga() {}
         public void buscar() { }
 
     }
