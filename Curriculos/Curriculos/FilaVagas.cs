@@ -9,47 +9,50 @@ namespace Curriculos
     public class FilaVagas
     {
         //Atributos
-        private Vagas vagaPrimeiro;
-        private Vagas vagaUltimo;
-        private FilaVagas filaVagaProximo;
+        private Vagas vagaPrim;
+        private Vagas vagaUlt;
+        private FilaVagas filaVagaProx;
 
         //Get e Set
-        public Vagas VagaPrim
+        internal Vagas VagaPrimeiro
         {
             get
             {
-                return vagaPrimeiro;
+                return vagaPrim;
             }
 
             set
             {
-                vagaPrimeiro = value;
+                vagaPrim = value;
             }
         }
-        public Vagas VagaUlt
+        internal Vagas VagaUltimo
         {
             get
             {
-                return vagaUltimo;
+                return vagaUlt;
             }
 
             set
             {
-                vagaUltimo = value;
+                vagaUlt = value;
             }
         }
-        public FilaVagas FilaProx
+
+        public FilaVagas FilaVagaProximo
         {
             get
             {
-                return filaVagaProximo;
+                return filaVagaProx;
             }
 
             set
             {
-                filaVagaProximo = value;
+                filaVagaProx = value;
             }
         }
+
+
 
         //Métodos
         public void Adicionar(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa) // Adiciona vaga no final da fila.

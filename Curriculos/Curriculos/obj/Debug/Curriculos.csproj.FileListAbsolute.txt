@@ -1,5 +1,3 @@
 c:\users\wanessa\documents\visual studio 2015\Projects\Curriculos\Curriculos\bin\Debug\Curriculos.exe.config
+C:\Users\Wanessa\Documents\GitHub\TPAED\Curriculos\Curriculos\bin\Debug\Curriculos.exe.config
 C:\Users\Wanessa\Documents\GitHub\TP\Curriculos\Curriculos\bin\Debug\Curriculos.exe.config
-C:\Users\Wanessa\Documents\GitHub\TP\Curriculos\Curriculos\obj\Debug\Curriculos.csprojResolveAssemblyReference.cache
-C:\Users\Wanessa\Documents\GitHub\TP\Curriculos\Curriculos\obj\Debug\Curriculos.Properties.Resources.resources
-C:\Users\Wanessa\Documents\GitHub\TP\Curriculos\Curriculos\obj\Debug\Curriculos.csproj.GenerateResource.Cache
