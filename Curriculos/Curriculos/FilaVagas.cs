@@ -13,6 +13,13 @@ namespace Curriculos
         private Vagas vagaUlt;
         private FilaVagas filaVagaProx;
 
+        //Construtor
+        public FilaVagas(string Area)
+        {
+            VagaPrim = new Vagas(Area);
+            VagaUlt = VagaPrim;
+        }
+
         //Get e Set
         internal Vagas VagaPrim
         {
@@ -77,11 +84,6 @@ namespace Curriculos
         {
             return VagaPrim == VagaUlt;
         }
-        //Construtor
-        public FilaVagas(string Area)
-        {
-            VagaPrim = new Vagas (Area);
-            VagaUlt = VagaPrim;
-        }
+        
     }
 }
