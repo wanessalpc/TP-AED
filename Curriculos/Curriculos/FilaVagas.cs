@@ -46,7 +46,6 @@ namespace Curriculos
                 vagaUlt = value;
             }
         }
-
         public FilaVagas FilaVagaProx
         {
             get
@@ -70,7 +69,7 @@ namespace Curriculos
             // Adiciona no arquivo uma linha com os dados da nova vaga.
             string arquivo = Area + ".txt";
             using (StreamWriter writer = new StreamWriter(arquivo, true))
-                writer.WriteLine(Area + "-" + Escolaridade + "-" + Salario + "-" + NomeEmpresa + "-" + Validade);
+                writer.WriteLine(Validade + "-" + Area + "-" + Escolaridade + "-" + Salario + "-" + NomeEmpresa);
         }
         public void Remover() // Remove a primeira vaga da fila.
         {
@@ -119,11 +118,11 @@ namespace Curriculos
             string arquivo = vagaPrim.Area + ".txt";
             using (StreamReader reader = new StreamReader(arquivo))
             {
-                while (!reader.EndOfStream)
+                while (!reader.EndOfStream) // Enquanto arquivo não acaba.
                 {
                     string linha = reader.ReadLine();
                     string[] dados = linha.Split('-');
-                    Adicionar(Convert.ToDateTime(dados[0]), VagaPrimeiro.Area, dados[1], Convert.ToDouble(dados[2]), dados[3]);
+                    Adicionar(Convert.ToDateTime(dados[0]), dados[1], dados[2], Convert.ToDouble(dados[3]), dados[4]);
                 }
             }
         }
@@ -131,7 +130,5 @@ namespace Curriculos
         {
             return vagaPrim == vagaUlt;
         }
-
-
     }
 }

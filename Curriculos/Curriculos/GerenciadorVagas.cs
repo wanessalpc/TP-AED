@@ -18,6 +18,7 @@ namespace Curriculos
         {
             FilaPrim = new FilaVagas(null);
             FilaUlt = FilaPrim;
+            LerArquivos();
         }
 
         //Get e Set
@@ -35,18 +36,18 @@ namespace Curriculos
         //Métodos
         public void AdicionarVaga(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa)
         {
-            FilaVagas Aux = FilaPrim.FilaVagaProximo;
+            FilaVagas Aux = FilaPrim.FilaVagaProx;
             while (Aux != null) // Percorre toda a lista de FilaVagas.
             {
-                if (Aux.VagaPrimeiro.Area == Area) // Caso encontre Area compativel => Adiciona vaga na fila da area.
+                if (Aux.VagaPrim.Area == Area) // Caso encontre Area compativel => Adiciona vaga na fila da area.
                 {
                     Aux.Adicionar(Validade, Area, Escolaridade, Salario, NomeEmpresa);
                     return;
                 }
-                Aux = Aux.FilaVagaProximo;
+                Aux = Aux.FilaVagaProx;
             }
             FilaVagas NovaFila = new FilaVagas(Area); // Caso não encontre Area compativel => instancia nova Fila para Area.
-            FilaUlt.FilaVagaProximo = NovaFila;
+            FilaUlt.FilaVagaProx = NovaFila;
             FilaUlt = NovaFila;
             FilaUlt.Adicionar(Validade, Area, Escolaridade, Salario, NomeEmpresa); // Adiciona a Vaga na nova fila instanciada.
             // Salva em texto arquivos de areas criados.
@@ -58,27 +59,27 @@ namespace Curriculos
         }
         public void RemoverVaga(string Area) // Remove vaga da fila da Area informada.
         {
-            FilaVagas Aux = FilaPrim.FilaVagaProximo;
+            FilaVagas Aux = FilaPrim.FilaVagaProx;
             while (Aux != null)  // Percorre toda a lista de FilaVagas.
             {
-                if (Aux.VagaPrimeiro.Area == Area) // Caso encontre Area compativel => Remove primeira vaga na fila da area.
+                if (Aux.VagaPrim.Area == Area) // Caso encontre Area compativel => Remove primeira vaga na fila da area.
                 {
                     Aux.Remover();
                     return;
                 }
-                Aux = Aux.FilaVagaProximo;
+                Aux = Aux.FilaVagaProx;
             }
             throw new Exception("Não ha vagas disponíveis nesta área."); // Caso não encontre Area compativel => throw Exception.
         }
         public List<Vagas> BuscarFila(string Area, string NomeEmpresa)
         {
-            FilaVagas Aux = FilaPrim.FilaVagaProximo;
+            FilaVagas Aux = FilaPrim.FilaVagaProx;
             List<Vagas> result = new List<Vagas>();
             while (Aux != null)
             {
-                if (Aux.VagaPrimeiro.Area == Area)
+                if (Aux.VagaPrim.Area == Area)
                     result = Aux.Buscar(NomeEmpresa);
-                Aux = Aux.FilaVagaProximo;
+                Aux = Aux.FilaVagaProx;
             }
             return result;
         }
@@ -89,23 +90,16 @@ namespace Curriculos
             {
                 using (StreamReader reader = new StreamReader("ListaArquivos.txt"))
                 {
-                    while (!reader.EndOfStream)
+                    while (!reader.EndOfStream)  // Enquanto arquivo não acaba.
                     {
                         string linha = reader.ReadLine();
                         FilaVagas NovaFila = new FilaVagas(linha);
-                        FilaUlt.FilaVagaProximo = NovaFila;
+                        FilaUlt.FilaVagaProx = NovaFila;
                         FilaUlt = NovaFila;
                         FilaUlt.LerArquivo();
                     }
                 }
             }
-        }
-        //Construtor
-        public GerenciadorVagas()
-        {
-            FilaPrim = new FilaVagas(null);
-            FilaUlt = FilaPrim;
-            LerArquivos();
         }
     }
 }
