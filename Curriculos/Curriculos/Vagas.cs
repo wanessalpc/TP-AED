@@ -13,8 +13,23 @@ namespace Curriculos
         private string area;
         private string escolaridade;
         private double salario;
-        private Vagas vagaProximo;
+        private Vagas vagaProx;
         private string nomeEmpresa;
+
+        //Construtor
+        public Vagas(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa)
+        {
+            this.Validade = Validade;
+            this.Area = Area;
+            this.Escolaridade = Escolaridade;
+            this.Salario = Salario;
+            this.NomeEmpresa = NomeEmpresa;
+        }
+        //Construtor padrão
+        public Vagas(string Area)
+        {
+            this.Area = Area;
+        }
 
         //Get e Set
         public DateTime Validade
@@ -69,16 +84,16 @@ namespace Curriculos
             }
         }
 
-        internal Vagas VagaProximo
+        internal Vagas VagaProx
         {
             get
             {
-                return vagaProximo;
+                return vagaProx;
             }
 
             set
             {
-                vagaProximo = value;
+                vagaProx = value;
             }
         }
 
@@ -95,19 +110,6 @@ namespace Curriculos
             }
         }
 
-        //Construtor
-        public Vagas(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa)
-        {
-            this.Validade = Validade;
-            this.Area = Area;
-            this.Escolaridade = Escolaridade;
-            this.Salario = Salario;
-            this.NomeEmpresa = NomeEmpresa;
-        }
-        //Construtor padrão
-        public Vagas(string Area)
-        {
-            this.Area = Area;
-        }
+        
     }
 }

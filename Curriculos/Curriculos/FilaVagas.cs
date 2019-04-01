@@ -14,8 +14,15 @@ namespace Curriculos
         private Vagas vagaUlt;
         private FilaVagas filaVagaProx;
 
+        //Construtor
+        public FilaVagas(string Area)
+        {
+            VagaPrim = new Vagas(Area);
+            VagaUlt = VagaPrim;
+        }
+
         //Get e Set
-        internal Vagas VagaPrimeiro
+        internal Vagas VagaPrim
         {
             get
             {
@@ -27,7 +34,7 @@ namespace Curriculos
                 vagaPrim = value;
             }
         }
-        internal Vagas VagaUltimo
+        internal Vagas VagaUlt
         {
             get
             {
@@ -39,7 +46,8 @@ namespace Curriculos
                 vagaUlt = value;
             }
         }
-        public FilaVagas FilaVagaProximo
+
+        public FilaVagas FilaVagaProx
         {
             get
             {
@@ -56,7 +64,7 @@ namespace Curriculos
         public void Adicionar(DateTime Validade, string Area, string Escolaridade, double Salario, string NomeEmpresa) // Adiciona vaga no final da fila.
         {
             Vagas NovaVaga = new Vagas(Validade, Area, Escolaridade, Salario, NomeEmpresa);
-            vagaUlt.VagaProximo = NovaVaga;
+            vagaUlt.VagaProx = NovaVaga;
             vagaUlt = NovaVaga;
 
             // Adiciona no arquivo uma linha com os dados da nova vaga.
@@ -67,8 +75,13 @@ namespace Curriculos
         public void Remover() // Remove a primeira vaga da fila.
         {
             if (Vazia()) throw new Exception("Não ha vagas disponíveis nesta área.");
-            vagaPrim.VagaProximo = vagaPrim.VagaProximo.VagaProximo; // Aponta para o proximo da fila.
-            if (vagaPrim.VagaProximo == null) // Se fila Vazia => alterar vagaUlt para lista vazia.
+
+            VagaPrim.VagaProx = VagaPrim.VagaProx; // Aponta para o proximo da fila.
+            if (VagaPrim.VagaProx == null) // Se fila Vazia => alterar VagaUlt para lista vazia.
+                VagaUlt = VagaPrim;
+
+            vagaPrim.VagaProx = vagaPrim.VagaProx.VagaProx; // Aponta para o proximo da fila.
+            if (vagaPrim.VagaProx == null) // Se fila Vazia => alterar vagaUlt para lista vazia.
                 vagaUlt = vagaPrim;
 
             // Deleta primeira linha do arquivo de texto.
@@ -79,13 +92,13 @@ namespace Curriculos
         }
         public List<Vagas> Buscar(string NomeEmpresa) // Retorna lista de vagas da empresa informada.
         {
-            Vagas Aux = vagaPrim.VagaProximo;
+            Vagas Aux = vagaPrim.VagaProx;
             List<Vagas> result = new List<Vagas>();
             while (Aux != null)
             {
                 if (Aux.NomeEmpresa == NomeEmpresa)
                     result.Add(Aux);
-                Aux = Aux.VagaProximo;
+                Aux = Aux.VagaProx;
             }
             return result;
         }
@@ -93,11 +106,11 @@ namespace Curriculos
         {
             if (Vazia()) return null;
             StringBuilder print = new StringBuilder();
-            Vagas Aux = VagaPrimeiro.VagaProximo;
+            Vagas Aux = VagaPrim.VagaProx;
             while (Aux != null)
             {
                 print.AppendLine(Aux.ToString());
-                Aux = Aux.VagaProximo;
+                Aux = Aux.VagaProx;
             }
             return print.ToString();
         }
@@ -118,11 +131,7 @@ namespace Curriculos
         {
             return vagaPrim == vagaUlt;
         }
-        //Construtor
-        public FilaVagas(string Area)
-        {
-            vagaPrim = new Vagas(Area);
-            vagaUlt = vagaPrim;
-        }
+
+
     }
 }

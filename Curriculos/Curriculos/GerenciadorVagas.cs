@@ -13,6 +13,13 @@ namespace Curriculos
         private FilaVagas filaPrim;
         private FilaVagas filaUlt;
 
+        //Construtor
+        public GerenciadorVagas()
+        {
+            FilaPrim = new FilaVagas(null);
+            FilaUlt = FilaPrim;
+        }
+
         //Get e Set
         public FilaVagas FilaPrim
         {
